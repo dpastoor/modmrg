@@ -1,4 +1,6 @@
-*.cpp.o:
+rdev/src/*.cpp.o:
+rdev/inst/project/*.cpp.o
+
 # History files
 .Rhistory
 .Rapp.history
