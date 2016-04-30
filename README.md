@@ -33,6 +33,13 @@ library(modmrg)
 
     . www.github.com/metrumresearchgroup
 
+    . 
+    . Attaching package: 'modmrg'
+
+    . The following object is masked from 'package:mrgsolve':
+    . 
+    .     pkmodel
+
 ``` r
 mod <- pk2cmt()
 
@@ -136,3 +143,10 @@ mod %>%
 ```
 
 ![](img/README-unnamed-chunk-4-1.png)<!-- -->
+
+``` r
+mod <- modmrg::pkmodel(ncmt=2) %>% param(Q=1, V2=8)
+mod %>% ev(amt=1000,rate=1000/70) %>% mrgsim(end=120) %>% plot
+```
+
+![](img/README-unnamed-chunk-5-1.png)<!-- -->

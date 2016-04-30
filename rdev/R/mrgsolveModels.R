@@ -87,16 +87,15 @@ NULL
 
 
 cfile_dir <- function() {
-    file.path(path.package("modmrg"), "project")
+  file.path(path.package("modmrg"), "project")
 }
 
 object_dir <- function() {
-    file.path(path.package("modmrg"), "project")
+  file.path(path.package("modmrg"), "project")
 }
 
 configure <- function(model,tryload=TRUE,...) {
   load(file=file.path(mrgsolve:::filename(object_dir(), model, ".save")))
-
   if(!mrgsolve:::dll_loaded(x)) {
     if(tryload) {
       warning("Model not loaded... attempting to load.")
@@ -165,7 +164,7 @@ NULL
 
 ##' @export
 ##' @rdname pk
-pk1cmt <- function(...) {x <- configure("pk1cmt",...); return(x)}
+pk1cmt <- function(...) {configure("pk1cmt",...)}
 ##' @export
 ##' @rdname pk
 pk2cmt <- function(...) return(configure("pk2cmt",...))
@@ -337,3 +336,44 @@ viral1 <- function(...) return(configure("viral1",...))
 viral2 <- function(...) return(configure("viral2",...))
 
 
+##'
+##' Simulate from 1- or 2-compartment PK model.
+##'
+##' This is an R function that returns model objects based on \code{$PKMODEL}.
+##'
+##' @param ncmt passed to \code{\link{PKMODEL}}
+##' @param depot passed to \code{\link{PKMODEL}}
+##' @param ... passed to \code{\link{update}}
+##' @return An object of class \code{\link{mrgmod-class}}
+##'
+##'
+##' @details Once the model object is generated, use \code{\link{param}} to check names of the parameters in the model and \code{\link{init}} to check
+##' the names of the compartments in the model.  Calculations for the amounts in each compartment are done via analytical solutions, not differential equations.
+##' A subject-level random effect is also provided for each PK parameter; use \code{\link{omat}} to see the names of those random effects.  All random effect
+##' variances have initial value of zero and may be updated via \code{\link{omat}}.
+##'
+##' @examples
+##'
+##' mod <- pkmodel(1)
+##'
+##' mod <- pkmodel(1,TRUE)
+##'
+##' mod %>% ev(amt=1000, ii=24, addl=3) %>% mrgsim(end=120)
+##'
+##' mod <- pkmodel(2)
+##'
+##' mod <- pkmodel(2,TRUE)
+##'
+##'
+##'
+##'
+##'
+##' @export
+##' @rdname pk_model
+pkmodel <- function(ncmt=1,depot=FALSE,...) {
+  stopifnot(ncmt %in% c(1,2))
+  depot <- as.logical(depot)
+  code <- paste0("modpk", ncmt, ifelse(depot, "po", ""))
+  x <- configure(code,...)
+  return(x)
+}
