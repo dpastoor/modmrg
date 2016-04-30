@@ -3,6 +3,21 @@ modmrg
 
 A package of models in `mrgsolve` format.
 
+Models
+------
+
+1.  PK: 1, 2, 3 compartment
+2.  PD: Indirect response type 1, 2, 3, 4 and direct EMAX with 2-cmt PK and
+3.  TMDD
+4.  Viral dynamic 1- and 2-strain models
+
+Help
+----
+
+``` r
+?modmrg
+```
+
 Example
 -------
 
@@ -72,7 +87,7 @@ mod %>%
   plot
 ```
 
-![](img/README-unnamed-chunk-2-1.png)<!-- -->
+![](img/README-unnamed-chunk-3-1.png)<!-- -->
 
 ``` r
 mod <- irm1()
@@ -118,4 +133,4 @@ mod %>%
   plot
 ```
 
-![](img/README-unnamed-chunk-3-1.png)<!-- -->
+![](img/README-unnamed-chunk-4-1.png)<!-- -->

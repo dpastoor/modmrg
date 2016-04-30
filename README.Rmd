@@ -16,6 +16,18 @@ knitr::opts_chunk$set(comment=".", fig.path="img/README-")
 
 A package of models in `mrgsolve` format.
 
+## Models
+1. PK: 1, 2, 3 compartment
+1. PD: Indirect response type 1, 2, 3, 4 and direct EMAX with 2-cmt PK and
+1. TMDD
+1. Viral dynamic 1- and 2-strain models
+
+## Help
+```{r,eval=FALSE}
+?modmrg
+```
+
+
 ## Example
 ```{r}
 library(modmrg)
