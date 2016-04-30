@@ -1,3 +1,4 @@
+*.cpp.o
 rdev/src/*.cpp.o:
 rdev/inst/project/*.cpp.o
 
