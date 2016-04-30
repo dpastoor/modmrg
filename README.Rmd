@@ -39,9 +39,10 @@ mod <- irm1()
 see(mod)
 
 mod %>% 
+  param(CL=0.5, n=2.5, IMAX=0.85) %>%
   ev(amt=750) %>% 
-  Req(RESP) %>%
-  knobs(n=seq(1,10,1)/5, delta=0.1, end=120) %>%
+  Req(RESP) %>% 
+  knobs(IC50=seq(5,55,10), delta=0.1, end=96) %>%
   plot
   
 ```
