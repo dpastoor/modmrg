@@ -71,6 +71,9 @@ NULL
 ##' \item{\code{Q2}}: intercompartmental clearance 2 (volume/time)
 ##' \item{\code{VMAX}}:  maximum rate, nonlinear process (mass/time)
 ##' \item{\code{KM}}: Michaelis constant (mass/volume)
+##' \item{\code{K10}}: elimination rate constant (1/time); \code{CL/VC}
+##' \item{\code{K12}}: rate constant for transfer to peripheral compartment from central (1/time); \code{Q/VC}
+##' \item{\code{K21}}: rate constant for transfer to central compartment from peripheral (1/time); \code{Q/VP}
 ##' }
 ##'
 ##' @section PD parameters:
@@ -81,6 +84,7 @@ NULL
 ##' \item{\code{KIN}}: zero-order response production rate (irm models) (response/time)
 ##' \item{\code{KOUT}}: first-order response elimination rate (irm models) (1/time)
 ##' \item{\code{n}}: sigmoidicity factor
+##' \item{\code{KEO}}: rate constant for transfer to effect compartment (1/time)
 ##' }
 NULL
 
@@ -376,4 +380,19 @@ pkmodel <- function(ncmt=1,depot=FALSE,...) {
   code <- paste0("modpk", ncmt, ifelse(depot, "po", ""))
   x <- configure(code,...)
   return(x)
+}
+
+
+##' Effect compartment model.
+##' 
+##' @param ... passed to \code{\link{update}}
+##' 
+##' @details 
+##' See \code{\link{pkpd_details}} for more detailed 
+##' descriptions of parameters and compartments.
+##' 
+##' @export
+##' 
+pd_effect <- function(...) {
+  configure("effect",...) 
 }
