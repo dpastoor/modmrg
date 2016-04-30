@@ -32,7 +32,9 @@ A package of models in `mrgsolve` format.
 ```
 
 
-## Example
+## Examples
+
+### 2-Compartment PK model
 ```{r}
 library(modmrg)
 
@@ -51,7 +53,7 @@ mod %>%
 ```
 
 
-
+### Indirect response model
 ```{r}
 mod <- irm1()
 see(mod)
@@ -65,6 +67,8 @@ mod %>%
   
 ```
 
+
+### PK model with analytical solution (not based on ODEs)
 ```{r}
 mod <- modmrg::pkmodel(ncmt=2) %>% param(Q=1, V2=8) %>% Req(CP)
 mod %>% ev(amt=1000,rate=1000/100) %>% mrgsim(end=336) %>% plot

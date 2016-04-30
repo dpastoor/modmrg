@@ -20,8 +20,10 @@ Help
 ?modmrg
 ```
 
-Example
--------
+Examples
+--------
+
+### 2-Compartment PK model
 
 ``` r
 library(modmrg)
@@ -98,6 +100,8 @@ mod %>%
 
 ![](img/README-unnamed-chunk-3-1.png)<!-- -->
 
+### Indirect response model
+
 ``` r
 mod <- irm1()
 see(mod)
@@ -143,6 +147,8 @@ mod %>%
 ```
 
 ![](img/README-unnamed-chunk-4-1.png)<!-- -->
+
+### PK model with analytical solution (not based on ODEs)
 
 ``` r
 mod <- modmrg::pkmodel(ncmt=2) %>% param(Q=1, V2=8) %>% Req(CP)
