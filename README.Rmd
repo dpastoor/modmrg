@@ -1,0 +1,44 @@
+---
+title: ""
+author: ""
+date: ""
+output: 
+  md_document:
+    variant: markdown_github
+---
+knitr::opts_chunk$set(comment=".", fig.path="img/README-")
+
+#modmrg
+
+A package of models in `mrgsolve` format.
+
+## Example
+```{r}
+library(modmrg)
+
+mod <- pk2cmt()
+
+mod
+
+param(mod)
+
+init(mod)
+
+mod %>%
+  ev(amt=250, ii=48, addl=10) %>% 
+  mrgsim(end=1000 )%>% 
+  plot
+```
+
+```{r}
+mod <- irm1()
+see(mod)
+
+mod %>% 
+  ev(amt=750) %>% 
+  Req(CP) %>%
+  knobs(n=seq(1,10,1)) %>%
+  plot
+  
+```
+

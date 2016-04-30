@@ -1,3 +1,4 @@
+*.cpp.o:
 # History files
 .Rhistory
 .Rapp.history
