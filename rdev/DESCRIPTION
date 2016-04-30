@@ -1,0 +1,18 @@
+Package: modmrg
+Type: Package
+Title: Precompiled PK and PK/PD models for mrgsolve
+Version: 0.1.0
+Date: 2016-04-29
+Author: Kyle Baron
+Depends:
+    mrgsolve,
+    R (>= 3.1.2)
+Suggests:
+  testthat
+Maintainer: Kyle Baron <kyleb@metrumrg.com>
+Description: PK/PD model simulation in R.
+License: CC BY-NC-ND 4.0
+RoxygenNote: 5.0.1
+Copyright: Metrum Research Group, LLC 2016
+
+
