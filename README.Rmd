@@ -24,7 +24,9 @@ A package of models in `mrgsolve` format.
 
 ## Help
 ```{r,eval=FALSE}
+
 ?modmrg
+
 
 ```
 
