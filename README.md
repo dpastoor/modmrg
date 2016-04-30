@@ -7,6 +7,8 @@ Models
 ------
 
 1.  PK: 1, 2, 3 compartment
+    -   All with dual-absorption and linear + non-linear elimination pathways
+
 2.  PD: Indirect response type 1, 2, 3, 4 and direct EMAX with 2-cmt PK and
 3.  TMDD
 4.  Viral dynamic 1- and 2-strain models
