@@ -112,7 +112,7 @@ see(mod)
 ``` r
 mod %>% 
   ev(amt=750) %>% 
-  Req(CP) %>%
+  Req(RESP) %>%
   knobs(n=seq(1,10,1)) %>%
   plot
 ```
