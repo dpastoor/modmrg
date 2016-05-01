@@ -19,7 +19,10 @@ A package of models in `mrgsolve` format.
 ## Models
 1. PK: 1, 2, 3 compartment
     * All with dual-absorption and linear + non-linear elimination pathways
-1. PD: Indirect response type 1, 2, 3, 4 and direct EMAX with 2-cmt PK and
+1. PD (all with 2-cmt PK): 
+    * Indirect response type 1, 2, 3, 4
+    * Direct EMAX model 
+    * Effect compartment model
 1. TMDD
 1. Viral dynamic 1- and 2-strain models
 

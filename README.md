@@ -9,7 +9,11 @@ Models
 1.  PK: 1, 2, 3 compartment
     -   All with dual-absorption and linear + non-linear elimination pathways
 
-2.  PD: Indirect response type 1, 2, 3, 4 and direct EMAX with 2-cmt PK and
+2.  PD (all with 2-cmt PK):
+    -   Indirect response type 1, 2, 3, 4
+    -   Direct EMAX model
+    -   Effect compartment model
+
 3.  TMDD
 4.  Viral dynamic 1- and 2-strain models
 
@@ -98,7 +102,7 @@ mod %>%
   plot
 ```
 
-![](img/README-unnamed-chunk-3-1.png)<!-- -->
+![](img/README-unnamed-chunk-3-1.png)
 
 ### Indirect response model
 
@@ -109,33 +113,33 @@ see(mod)
 
     . 
     . Model file:  irm1.cpp 
-    . $PARAM
-    . CL=1, VC=10, KA1=0.5, KA2=0.5
-    . Q = 0, VP=10
-    . KIN = 10, KOUT=2, IC50 = 2, IMAX=1
-    . VMAX = 0, KM=2, n=1
-    . 
-    . $INIT EV1 = 0, CENT= 0, PERIPH = 0, RESP = 5, EV2=0
-    . 
-    . 
-    . $GLOBAL
-    . #define CP (CENT/VC)
-    . #define CT (PERIPH/VP)
-    . #define CLNL (VMAX/(KM+CP))
-    . #define INH (IMAX*pow(CP,n)/(pow(IC50,n)+pow(CP,n)))
-    . 
-    . $MAIN
-    . RESP_0 = KIN/KOUT;
-    . 
-    . $ODE
-    . dxdt_EV1 = -KA1*EV1;
-    . dxdt_EV2 = -KA2*EV2;
-    . dxdt_CENT = KA1*EV1 + KA2*EV2 - (CL+CLNL+Q)*CP  + Q*CT;
-    . dxdt_PERIPH = Q*CP - Q*CT;
-    . dxdt_RESP = KIN*(1-INH) - KOUT*RESP;
-    . 
-    . $TABLE
-    . table(CP)=CP;
+    .  $PARAM
+    .  CL=1, VC=10, KA1=0.5, KA2=0.5
+    .  Q = 0, VP=10
+    .  KIN = 10, KOUT=2, IC50 = 2, IMAX=1
+    .  VMAX = 0, KM=2, n=1
+    .  
+    .  $INIT EV1 = 0, CENT= 0, PERIPH = 0, RESP = 5, EV2=0
+    .  
+    .  
+    .  $GLOBAL
+    .  #define CP (CENT/VC)
+    .  #define CT (PERIPH/VP)
+    .  #define CLNL (VMAX/(KM+CP))
+    .  #define INH (IMAX*pow(CP,n)/(pow(IC50,n)+pow(CP,n)))
+    .  
+    .  $MAIN
+    .  RESP_0 = KIN/KOUT;
+    .  
+    .  $ODE
+    .  dxdt_EV1 = -KA1*EV1;
+    .  dxdt_EV2 = -KA2*EV2;
+    .  dxdt_CENT = KA1*EV1 + KA2*EV2 - (CL+CLNL+Q)*CP  + Q*CT;
+    .  dxdt_PERIPH = Q*CP - Q*CT;
+    .  dxdt_RESP = KIN*(1-INH) - KOUT*RESP;
+    .  
+    .  $TABLE
+    .  table(CP)=CP;
 
 ``` r
 mod %>% 
@@ -146,7 +150,7 @@ mod %>%
   plot
 ```
 
-![](img/README-unnamed-chunk-4-1.png)<!-- -->
+![](img/README-unnamed-chunk-4-1.png)
 
 ### PK model with analytical solution (not based on ODEs)
 
@@ -155,4 +159,4 @@ mod <- modmrg::pkmodel(ncmt=2) %>% param(Q=1, V2=8) %>% Req(CP)
 mod %>% ev(amt=1000,rate=1000/100) %>% mrgsim(end=336) %>% plot
 ```
 
-![](img/README-unnamed-chunk-5-1.png)<!-- -->
+![](img/README-unnamed-chunk-5-1.png)
