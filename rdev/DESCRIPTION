@@ -1,11 +1,11 @@
 Package: modmrg
 Type: Package
 Title: Precompiled PK and PK/PD models for mrgsolve
-Version: 0.1.0
+Version: 0.0.1
 Date: 2016-04-29
 Author: Kyle Baron
 Depends:
-    mrgsolve,
+    mrgsolve (>= 0.5.12),
     R (>= 3.1.2)
 Suggests:
   testthat
