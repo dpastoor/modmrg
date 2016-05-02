@@ -6,6 +6,7 @@
 \alias{irm2}
 \alias{irm3}
 \alias{irm4}
+\alias{pd_effect}
 \alias{pkpd}
 \title{Pharmacokinetic / pharmacodynamic models.}
 \usage{
@@ -18,6 +19,8 @@ irm3(...)
 irm4(...)
 
 emax(...)
+
+pd_effect(...)
 }
 \arguments{
 \item{...}{passed to update}
@@ -38,10 +41,11 @@ Also, once the model is loaded, use \code{\link{see}} method for \code{mrgmod} t
 \section{Model description}{
 
 \itemize{
- \item{\code{irm1}} inhibition of build-up
- \item{\code{irm2}} inhibition of loss
- \item{\code{irm3}} stimulation of build-up
- \item{\code{irm4}} stimulation of loss
+ \item{\code{irm1}} inhibition of response production
+ \item{\code{irm2}} inhibition of response loss
+ \item{\code{irm3}} stimulation of response production
+ \item{\code{irm4}} stimulation of response loss
+ \item{\code{pd_effect}} effect compartment model
  \item{\code{emax}} sigmoid emax model
 }
 }

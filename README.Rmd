@@ -85,3 +85,10 @@ mod <- modmrg::pkmodel(ncmt=2) %>% param(Q=1, V2=8) %>% Req(CP)
 mod %>% ev(amt=1000,rate=1000/100) %>% mrgsim(end=336) %>% plot
 ```
 
+### Extract the code from any model
+```{r}
+mod <- viral2()
+
+modmrg:::code(mod)
+```
+

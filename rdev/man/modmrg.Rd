@@ -12,7 +12,6 @@ Precompiled models for use with \code{mrgsolve}.
 
 \itemize{
  \item  Package \href{00Index.html}{index}, including a listing of all functions
- \item Package \href{../doc/index.html}{vignettes} in pdf format
 }
 }
 
@@ -21,7 +20,7 @@ Precompiled models for use with \code{mrgsolve}.
 
 Currently available are:
 \itemize{
-\item \code{\link{pk}} models
+\item Traditional \code{\link{pk}} models
 \item \code{\link{pkpd}} models
 \item \code{\link{tmdd}} models
 \item \code{\link{viral}} dynamics models
@@ -35,6 +34,7 @@ mod <- irm1()
 mod <- irm2()
 mod <- irm3()
 mod <- irm4()
+mod <- pd_effect()
 mod <- emax()
 mod <- tmdd()
 mod <- viral1()

@@ -71,7 +71,7 @@ mod
     .   source:        pk2cmt.cpp
     .   shared object: modmrg (loaded)
     . 
-    .   compile date:  05/02 09:43
+    .   compile date:  05/02 10:26
     .   Time:          start: 0 end: 24 delta: 1
     .   >              add: <none>
     .   >              tscale: 1
@@ -172,3 +172,54 @@ mod %>% ev(amt=1000,rate=1000/100) %>% mrgsim(end=336) %>% plot
 ```
 
 ![](img/README-unnamed-chunk-6-1.png)
+
+### Extract the code from any model
+
+``` r
+mod <- viral2()
+
+modmrg:::code(mod)
+```
+
+    .  [1] "$PARAM"                                                                  
+    .  [2] "p= 25, fit=0.75, c = 8"                                                  
+    .  [3] "delta=0.4, s=0, d=1/300, beta=5.5E-8"                                    
+    .  [4] "N = 6.5E6, shift=10, AUC=0, IC50=2"                                      
+    .  [5] "mu=6.14E-5, Tmax = 1.3E7, rho = 1.25"                                    
+    .  [6] ""                                                                        
+    .  [7] "$INIT"                                                                   
+    .  [8] "expos=0, T = 1126801, I = 1126801, V = 8148974"                          
+    .  [9] "VM = 87.8, IM = 12.1"                                                    
+    . [10] ""                                                                        
+    . [11] "$SET delta=0.2"                                                          
+    . [12] ""                                                                        
+    . [13] "$GLOBAL"                                                                 
+    . [14] "#define a (s + rho*T_0*(1-((T_0+N)/Tmax)) - d*T_0)"                      
+    . [15] "#define b (beta*T_0 * ((1-fit)/(1-mu-fit)) * (1+(rho*T_0)/(delta*Tmax)))"
+    . [16] "#define eps (expos/(IC50+expos))"                                        
+    . [17] "#define epsm (expos/(IC50*shift+expos))"                                 
+    . [18] ""                                                                        
+    . [19] "$MAIN"                                                                   
+    . [20] "T_0 = c*delta/((1-mu)*beta*p);"                                          
+    . [21] "V_0 = a/b;"                                                              
+    . [22] "I_0 = (beta/delta)*V_0 * T_0;"                                           
+    . [23] "VM_0 = V_0*(mu)/(1-mu-fit);"                                             
+    . [24] "IM_0 = (beta/delta) * VM_0 * T_0;"                                       
+    . [25] "expos_0 = AUC;"                                                          
+    . [26] ""                                                                        
+    . [27] ""                                                                        
+    . [28] "$ODE"                                                                    
+    . [29] "dxdt_T = s+rho*T*(1-((T+I+IM+N)/Tmax)) - d*T - beta*V*T - beta*VM*T;"    
+    . [30] "dxdt_I = beta*V*T - delta*I;"                                            
+    . [31] "dxdt_V = (1-mu)*(1-eps)*p*I - c*V;"                                      
+    . [32] "dxdt_IM = beta*VM*T - delta*IM;"                                         
+    . [33] "dxdt_VM = mu*(1-eps)*p*I + (1-epsm)*fit*p*IM - c*VM;"                    
+    . [34] "dxdt_expos = 0;"                                                         
+    . [35] ""                                                                        
+    . [36] "$TABLE"                                                                  
+    . [37] "table(logVT) = log10(V+VM);"                                             
+    . [38] "table(logV) = log10(V);"                                                 
+    . [39] "table(logVM) = log10(VM);"                                               
+    . [40] "table(logIT) = log10(IM+I);"                                             
+    . [41] "table(logChange) = log10(VM+V) - log10(VM_0 + V_0);"                     
+    . [42] ""

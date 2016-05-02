@@ -11,14 +11,13 @@
 ##' @section Package help:
 ##' \itemize{
 ##'  \item  Package \href{00Index.html}{index}, including a listing of all functions
-##'  \item Package \href{../doc/index.html}{vignettes} in pdf format
 ##' }
 ##'
 ##' @section Types of models:
 ##'
 ##' Currently available are:
 ##' \itemize{
-##' \item \code{\link{pk}} models
+##' \item Traditional \code{\link{pk}} models
 ##' \item \code{\link{pkpd}} models
 ##' \item \code{\link{tmdd}} models
 ##' \item \code{\link{viral}} dynamics models
@@ -32,6 +31,7 @@
 ##' mod <- irm2()
 ##' mod <- irm3()
 ##' mod <- irm4()
+##' mod <- pd_effect()
 ##' mod <- emax()
 ##' mod <- tmdd()
 ##' mod <- viral1()
@@ -195,10 +195,11 @@ pk1cmt_pop <- function(...) return(configure("pk1cmt_pop", ...))
 ##'
 ##' @section Model description:
 ##' \itemize{
-##'  \item{\code{irm1}} inhibition of build-up
-##'  \item{\code{irm2}} inhibition of loss
-##'  \item{\code{irm3}} stimulation of build-up
-##'  \item{\code{irm4}} stimulation of loss
+##'  \item{\code{irm1}} inhibition of response production
+##'  \item{\code{irm2}} inhibition of response loss
+##'  \item{\code{irm3}} stimulation of response production
+##'  \item{\code{irm4}} stimulation of response loss
+##'  \item{\code{pd_effect}} effect compartment model
 ##'  \item{\code{emax}} sigmoid emax model
 ##' }
 ##' @return an object of class \code{packmod}
@@ -383,16 +384,22 @@ pkmodel <- function(ncmt=1,depot=FALSE,...) {
 }
 
 
-##' Effect compartment model.
-##' 
-##' @param ... passed to \code{\link{update}}
-##' 
-##' @details 
-##' See \code{\link{pkpd_details}} for more detailed 
-##' descriptions of parameters and compartments.
-##' 
+##' @rdname pkpd
 ##' @export
 ##' 
 pd_effect <- function(...) {
   configure("effect",...) 
+}
+
+##' Extract the code from a model.
+##' 
+##' @param x an mrgsolve model object
+##' @return a character vector of model code
+code <- function(x) {
+  what <- try(x@code, silent=TRUE)
+  if(inherits("try-error",what)) {
+    message("Could not find model code.")
+    return(invisible(NULL))
+  }
+  return(what)
 }
