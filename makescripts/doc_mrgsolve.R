@@ -10,7 +10,7 @@ pkg <- file.path("rdev")
 
 document(pkg)
 
-
+source("makescripts/buildmodels.R")
 
 
 
