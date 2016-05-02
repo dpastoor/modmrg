@@ -403,3 +403,8 @@ code <- function(x) {
   }
   return(what)
 }
+
+.onAttach <- function(libname,pkgname) {
+  packageStartupMessage("modmrg: Pre-release / Community Edition")
+  packageStartupMessage("www.github.com/metrumresearchgroup")
+}
