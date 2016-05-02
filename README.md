@@ -3,6 +3,13 @@ modmrg
 
 A package of models in `mrgsolve` format.
 
+Installation
+------------
+
+``` r
+devtools::install_github("metrumresearchgroup/modmrg", subdir="rdev")
+```
+
 Models
 ------
 
@@ -59,7 +66,7 @@ mod
     .   source:        pk2cmt.cpp
     .   shared object: modmrg (loaded)
     . 
-    .   compile date:  
+    .   compile date:  05/02 09:43
     .   Time:          start: 0 end: 24 delta: 1
     .   >              add: <none>
     .   >              tscale: 1
@@ -102,7 +109,7 @@ mod %>%
   plot
 ```
 
-![](img/README-unnamed-chunk-3-1.png)
+![](img/README-unnamed-chunk-4-1.png)
 
 ### Indirect response model
 
@@ -150,7 +157,7 @@ mod %>%
   plot
 ```
 
-![](img/README-unnamed-chunk-4-1.png)
+![](img/README-unnamed-chunk-5-1.png)
 
 ### PK model with analytical solution (not based on ODEs)
 
@@ -159,4 +166,4 @@ mod <- modmrg::pkmodel(ncmt=2) %>% param(Q=1, V2=8) %>% Req(CP)
 mod %>% ev(amt=1000,rate=1000/100) %>% mrgsim(end=336) %>% plot
 ```
 
-![](img/README-unnamed-chunk-5-1.png)
+![](img/README-unnamed-chunk-6-1.png)

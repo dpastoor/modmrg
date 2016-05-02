@@ -16,6 +16,13 @@ knitr::opts_chunk$set(comment=".", fig.path="img/README-")
 
 A package of models in `mrgsolve` format.
 
+
+## Installation
+```{r,eval=FALSE}
+devtools::install_github("metrumresearchgroup/modmrg", subdir="rdev")
+```
+
+
 ## Models
 1. PK: 1, 2, 3 compartment
     * All with dual-absorption and linear + non-linear elimination pathways
