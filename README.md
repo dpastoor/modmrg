@@ -10,6 +10,11 @@ Installation
 devtools::install_github("metrumresearchgroup/modmrg", subdir="rdev")
 ```
 
+Dependencies
+------------
+
+`modmrg` depends on `mrgsolve`. **NOTE**: we are still working out the necessary policies to make sure that `modmrg` is compatible with `mrgsolve`. For now, it is best to use the latest dev versions of both packages.
+
 Models
 ------
 

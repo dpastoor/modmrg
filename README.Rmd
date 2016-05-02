@@ -16,12 +16,13 @@ knitr::opts_chunk$set(comment=".", fig.path="img/README-")
 
 A package of models in `mrgsolve` format.
 
-
 ## Installation
 ```{r,eval=FALSE}
 devtools::install_github("metrumresearchgroup/modmrg", subdir="rdev")
 ```
-
+## Dependencies
+`modmrg` depends on `mrgsolve`.  __NOTE__: we are still working out the necessary policies to make sure that `modmrg` is compatible 
+with `mrgsolve`.  For now, it is best to use the latest dev versions of both packages.
 
 ## Models
 1. PK: 1, 2, 3 compartment
