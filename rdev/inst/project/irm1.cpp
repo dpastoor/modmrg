@@ -23,5 +23,4 @@ dxdt_CENT = KA1*EV1 + KA2*EV2 - (CL+CLNL+Q)*CP  + Q*CT;
 dxdt_PERIPH = Q*CP - Q*CT;
 dxdt_RESP = KIN*(1-INH) - KOUT*RESP;
 
-$TABLE
-table(CP)=CP;
+$CAPTURE CP

@@ -5,9 +5,6 @@ R0 = 64.31, KDEG = 0.079, KINT = 2, KON=0.101, KOFF = 10.1
 
 $INIT EV1 = 0, CENT=0, TISS = 0, REC = 0, RC = 0, EV2 = 0
 
-
-
-
 $GLOBAL
 namespace tmdd {
   double _dxdt_CP=0;
@@ -15,7 +12,6 @@ namespace tmdd {
 }
 #define KSYN (R0*KDEG)
 #define CP (CENT/VC)
-
 
 $MAIN
 REC_0 = R0;
@@ -31,8 +27,7 @@ dxdt_TISS = KPT*CP*VC - KTP*TISS;
 dxdt_REC = KSYN - KDEG*REC - KON*CP*REC + KOFF*RC;
 dxdt_RC = KON*CP*REC - (KINT+KOFF)*RC;
 
-
 $TABLE
-table(CP)=CP;
 table(TOTAL) = REC+RC;
 
+$CAPTURE CP

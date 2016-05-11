@@ -18,5 +18,4 @@ dxdt_CENT = KA1*EV1 + KA2*EV2 - (CL+CLNL+Q+Q2)*CP  + Q*CT + Q2*CT2;
 dxdt_PERIPH = Q*CP - Q*CT;
 dxdt_PERIPH2 = Q2*CP - Q2*CT2;
 
-$TABLE
-table(CP)=CP;
+$CAPTURE CP

@@ -33,10 +33,10 @@
 // GLOBAL VARIABLES:
 
 
+double CP;
 typedef double localdouble;
 typedef int localint;
 typedef bool localbool;
-double CP;
 
 // MAIN CODE BLOCK:
 BEGIN_main

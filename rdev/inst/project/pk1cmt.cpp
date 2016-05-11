@@ -14,5 +14,4 @@ dxdt_EV1 = -KA1*EV1;
 dxdt_EV2 = -KA2*EV2;
 dxdt_CENT = KA1*EV1 + KA2*EV2 - (CL+CLNL)*CP;
 
-$TABLE
-table(CP) = CP;
+$CAPTURE CP

@@ -67,6 +67,7 @@ mod %>%
 ### Indirect response model
 ```{r}
 mod <- irm1()
+
 see(mod)
 
 mod %>% 

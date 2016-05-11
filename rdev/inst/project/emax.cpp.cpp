@@ -59,6 +59,6 @@ END_ode
 
 // TABLE CODE BLOCK:
 BEGIN_table
-table(CP)=CP; 
-table(RESP) = RESP;
+capture(CP);
+capture(RESP);
 END_table

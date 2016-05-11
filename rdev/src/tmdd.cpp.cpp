@@ -71,6 +71,6 @@ END_ode
 
 // TABLE CODE BLOCK:
 BEGIN_table
-table(CP)=CP;
 table(TOTAL) = REC+RC;
+capture(CP);
 END_table
