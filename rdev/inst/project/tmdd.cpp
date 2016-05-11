@@ -3,7 +3,7 @@ KPT = 0.064, KTP = 0.123, VC=0.032, KA1 = 0.142, KA2 = 0.6
 KEL = 0.106
 R0 = 64.31, KDEG = 0.079, KINT = 2, KON=0.101, KOFF = 10.1
 
-$INIT EV1 = 0, CENT=0, TISS = 0, REC = 0, RC = 0, EV2 = 0
+$CMT EV1 CENT TISS REC RC EV2
 
 $GLOBAL
 namespace tmdd {
@@ -27,7 +27,6 @@ dxdt_TISS = KPT*CP*VC - KTP*TISS;
 dxdt_REC = KSYN - KDEG*REC - KON*CP*REC + KOFF*RC;
 dxdt_RC = KON*CP*REC - (KINT+KOFF)*RC;
 
-$TABLE
-table(TOTAL) = REC+RC;
+$TABLE table(TOTAL) = REC+RC;
 
 $CAPTURE CP

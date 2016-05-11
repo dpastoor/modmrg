@@ -3,8 +3,7 @@ CL=1, VC=10, KA1=1, KA2=1, F1=1
 TVCL = 1, TVVC = 10, TVKA1 = 1, TVKA2 = 1
 VMAX = 0, KM=2
 
-$INIT
-EV1 = 0, CENT = 0, EV2=0
+$CMT EV1 CENT EV2
 
 $GLOBAL
 #define CT (PERIPH/VP)
@@ -14,8 +13,7 @@ namespace pop1 {
   double CLi=0, VCi = 0, KA1i = 0, KA2i= 0, CP = 0; 
 }
 
-$OMEGA
-0.1 0.2 0.3 0.4
+$OMEGA 0.1 0.2 0.3 0.4
 
 $MAIN
   pop1::CLi = TVCL*exp(ETA(1));
