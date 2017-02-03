@@ -1,6 +1,8 @@
 modmrg
 ======
 
+# *DEPRECATED* syntax in many of these models now, use internal model library to mrgsolve or other references!
+
 A package of models in `mrgsolve` format.
 
 Installation
